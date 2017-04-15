@@ -78,5 +78,38 @@ namespace BBank
                 throw new Exception(ex.Message);
             }
         }
+        public bool encerrarConta(String numero)
+        {
+            MySqlCommand cmd = new MySqlCommand();
+            cmd.Connection = new MySqlConnection(conMySQL);
+
+            try
+            {
+                cmd.Connection.Open();
+                cmd.CommandText = "SELECT SALDO FROM CONTA WHERE NUMERO = @NUMERO";
+                cmd.Parameters.Add("@NUMERO", MySqlDbType.String).Value = numero;
+
+                MySqlDataReader dr = cmd.ExecuteReader();
+                dr.Read();
+                if (Convert.ToDecimal(dr["SALDO"]) > 0)
+                {
+                    return false;
+                }
+                else    
+                {
+                    dr.Close();
+                    cmd.Parameters.Clear();
+                    cmd.CommandText = "UPDATE CONTA SET ATIVA = 0 WHERE NUMERO = @NUMERO;";
+                    cmd.Parameters.Add("@NUMERO", MySqlDbType.String).Value = numero;
+                    cmd.ExecuteNonQuery();
+                    return true;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+            return true;
+        }
     }
 }

@@ -28,5 +28,11 @@ namespace BBank
             frmListaContas listagem = new frmListaContas();
             listagem.ShowDialog();
         }
+
+        private void btnEncerrarConta_Click(object sender, EventArgs e)
+        {
+            frmEncerrarConta encerrar = new frmEncerrarConta();
+            encerrar.ShowDialog();
+        }
     }
 }

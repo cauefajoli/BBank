@@ -59,6 +59,7 @@
             this.btnEncerrarConta.TabIndex = 1;
             this.btnEncerrarConta.Text = "ENCERRAR CONTA";
             this.btnEncerrarConta.UseVisualStyleBackColor = true;
+            this.btnEncerrarConta.Click += new System.EventHandler(this.btnEncerrarConta_Click);
             // 
             // btnListarConta
             // 

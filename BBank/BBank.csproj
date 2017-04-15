@@ -56,6 +56,12 @@
     <Compile Include="frmCadastrarConta.Designer.cs">
       <DependentUpon>frmCadastrarConta.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmEncerrarConta.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmEncerrarConta.Designer.cs">
+      <DependentUpon>frmEncerrarConta.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmListaContas.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -75,6 +81,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="frmCadastrarConta.resx">
       <DependentUpon>frmCadastrarConta.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmEncerrarConta.resx">
+      <DependentUpon>frmEncerrarConta.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmListaContas.resx">
       <DependentUpon>frmListaContas.cs</DependentUpon>
