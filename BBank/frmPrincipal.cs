@@ -22,5 +22,11 @@ namespace BBank
             frmCadastrarConta cadastro = new frmCadastrarConta();
             cadastro.ShowDialog();
         }
+
+        private void btnListarConta_Click(object sender, EventArgs e)
+        {
+            frmListaContas listagem = new frmListaContas();
+            listagem.ShowDialog();
+        }
     }
 }

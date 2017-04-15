@@ -37,10 +37,46 @@ namespace BBank
             }
             catch (Exception ex)
             {
-
-                throw;
+                throw new Exception(ex.Message);
             }
-            return true;
+            finally
+            {
+                cmd.Connection.Close();
+            }
+        }
+        public List<ContaModelo> listarConta()
+        {
+            MySqlCommand cmd = new MySqlCommand();
+            cmd.Connection = new MySqlConnection(conMySQL);
+            List<ContaModelo> contas = new List<ContaModelo>();
+
+            try
+            {
+                cmd.Connection.Open();
+                cmd.CommandText = "SELECT * FROM CONTA;";
+
+                MySqlDataReader dr = cmd.ExecuteReader();
+                if (dr.HasRows)
+                {
+                    while (dr.Read())
+                    {
+                        ContaModelo conta = new ContaModelo();
+                        conta.numero = dr["NUMERO"].ToString();
+                        conta.agencia = dr["AGENCIA"].ToString();
+                        conta.saldo = Convert.ToDecimal(dr["SALDO"]);
+                        conta.tipo = Convert.ToChar(dr["TIPO"]);
+
+                        contas.Add(conta);
+                    }
+                }
+
+                return contas;
+            }
+            catch (Exception ex)
+            {
+
+                throw new Exception(ex.Message);
+            }
         }
     }
 }

@@ -56,6 +56,12 @@
     <Compile Include="frmCadastrarConta.Designer.cs">
       <DependentUpon>frmCadastrarConta.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmListaContas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmListaContas.Designer.cs">
+      <DependentUpon>frmListaContas.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmPrincipal.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -70,6 +76,9 @@
     <EmbeddedResource Include="frmCadastrarConta.resx">
       <DependentUpon>frmCadastrarConta.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmListaContas.resx">
+      <DependentUpon>frmListaContas.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmPrincipal.resx">
       <DependentUpon>frmPrincipal.cs</DependentUpon>
     </EmbeddedResource>
@@ -83,6 +92,7 @@
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
     <None Include="packages.config" />
+    <None Include="Properties\DataSources\BBank.Model.ContaCorrente.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

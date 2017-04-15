@@ -25,7 +25,8 @@ namespace BBank
                 ContaModelo conta = new ContaModelo();
                 conta.numero = txtbNumero.Text;
                 conta.agencia = txtbAgencia.Text;
-                conta.saldo = Convert.ToDecimal(txtbSaldo.Text);
+                txtbSaldo.Text.Replace(",", ".");
+                conta.saldo = Convert.ToDecimal((txtbSaldo.Text.Equals("") ? "0.00" : txtbSaldo.Text));
                 if (rdCorrente.Checked)
                     conta.tipo = 'C';
                 else

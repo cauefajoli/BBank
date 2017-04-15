@@ -69,6 +69,7 @@
             this.btnListarConta.TabIndex = 2;
             this.btnListarConta.Text = "LISTAR CONTAS";
             this.btnListarConta.UseVisualStyleBackColor = true;
+            this.btnListarConta.Click += new System.EventHandler(this.btnListarConta_Click);
             // 
             // btnDeposito
             // 
