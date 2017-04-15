@@ -101,6 +101,7 @@
             this.btnTransferencia.TabIndex = 5;
             this.btnTransferencia.Text = "TRANSFERÊNCIA";
             this.btnTransferencia.UseVisualStyleBackColor = true;
+            this.btnTransferencia.Click += new System.EventHandler(this.btnTransferencia_Click);
             // 
             // pictureBox1
             // 

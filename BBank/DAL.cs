@@ -109,7 +109,6 @@ namespace BBank
             {
                 throw new Exception(ex.Message);
             }
-            return true;
         }
     }
 }

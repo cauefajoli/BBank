@@ -74,6 +74,12 @@
     <Compile Include="frmPrincipal.Designer.cs">
       <DependentUpon>frmPrincipal.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmTransferencia.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmTransferencia.Designer.cs">
+      <DependentUpon>frmTransferencia.cs</DependentUpon>
+    </Compile>
     <Compile Include="Model\ContaCorrente.cs" />
     <Compile Include="Model\ContaModelo.cs" />
     <Compile Include="Model\ContaPoupanca.cs" />
@@ -90,6 +96,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmPrincipal.resx">
       <DependentUpon>frmPrincipal.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmTransferencia.resx">
+      <DependentUpon>frmTransferencia.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

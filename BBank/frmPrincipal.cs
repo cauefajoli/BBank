@@ -34,5 +34,11 @@ namespace BBank
             frmEncerrarConta encerrar = new frmEncerrarConta();
             encerrar.ShowDialog();
         }
+
+        private void btnTransferencia_Click(object sender, EventArgs e)
+        {
+            frmTransferencia transferir = new frmTransferencia();
+            transferir.ShowDialog();
+        }
     }
 }
