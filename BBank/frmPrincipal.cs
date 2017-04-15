@@ -10,11 +10,17 @@ using System.Windows.Forms;
 
 namespace BBank
 {
-    public partial class Form1 : Form
+    public partial class frmPrincipal : Form
     {
-        public Form1()
+        public frmPrincipal()
         {
             InitializeComponent();
+        }
+
+        private void btnCadastrarConta_Click(object sender, EventArgs e)
+        {
+            frmCadastrarConta cadastro = new frmCadastrarConta();
+            cadastro.ShowDialog();
         }
     }
 }
