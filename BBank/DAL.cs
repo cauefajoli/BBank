@@ -110,5 +110,80 @@ namespace BBank
                 throw new Exception(ex.Message);
             }
         }
+        public ContaModelo RetornaConta(String numero)
+        {
+            MySqlCommand cmd = new MySqlCommand();
+            cmd.Connection = new MySqlConnection(conMySQL);
+            ContaModelo contaModelo = new ContaModelo();
+            try
+            {
+                cmd.Connection.Open();
+                cmd.CommandText = "SELECT * FROM CONTA WHERE NUMERO = @NUMERO";
+                cmd.Parameters.Add("@NUMERO", MySqlDbType.String).Value = numero;
+                MySqlDataReader dr = cmd.ExecuteReader();
+                if (dr.HasRows)
+                {
+                    dr.Read();
+                    if (Convert.ToChar(dr["TIPO"]) == 'C')
+                    {
+                        ContaCorrente conta = new ContaCorrente();
+                        conta.numero = dr["NUMERO"].ToString();
+                        conta.agencia = dr["AGENCIA"].ToString();
+                        conta.tipo = 'C';
+                        conta.saldo = Convert.ToDecimal(dr["SALDO"]);
+                        return conta;
+                    }
+                    else
+                    {
+                        ContaPoupanca conta = new ContaPoupanca();
+                        conta.numero = dr["NUMERO"].ToString();
+                        conta.agencia = dr["AGENCIA"].ToString();
+                        conta.tipo = 'P';
+                        conta.saldo = Convert.ToDecimal(dr["SALDO"]);
+                        return conta;
+                    }
+                }
+                else
+                    return contaModelo;
+            }
+            catch (Exception ex)
+            {
+
+                throw new Exception(ex.Message);
+            }
+            finally
+            {
+                cmd.Connection.Clone();
+            }
+        }
+        public bool transferir(ContaModelo contaOrigem,ContaModelo contaDestino)
+        {
+            MySqlCommand cmd = new MySqlCommand();
+            cmd.Connection = new MySqlConnection(conMySQL);
+
+            try
+            {
+                cmd.Connection.Open();
+                cmd.Transaction = cmd.Connection.BeginTransaction();
+                cmd.CommandText = "UPDATE CONTA SET SALDO = @SALDO WHERE NUMERO = @NUMERO";
+                cmd.Parameters.Add("@SALDO", MySqlDbType.Decimal).Value = contaOrigem.saldo;
+                cmd.Parameters.Add("@NUMERO", MySqlDbType.String).Value = contaOrigem.numero;
+                cmd.ExecuteNonQuery();
+
+                cmd.Parameters.Clear();
+                cmd.CommandText = "UPDATE CONTA SET SALDO = @SALDO WHERE NUMERO = @NUMERO";
+                cmd.Parameters.Add("@SALDO", MySqlDbType.Decimal).Value = contaDestino.saldo;
+                cmd.Parameters.Add("@NUMERO", MySqlDbType.String).Value = contaDestino.numero;
+                cmd.ExecuteNonQuery();
+
+                cmd.Transaction.Commit();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                cmd.Transaction.Rollback();
+                throw new Exception(ex.Message);
+            }
+        }
     }
 }

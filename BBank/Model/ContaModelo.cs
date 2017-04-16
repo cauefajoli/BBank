@@ -13,9 +13,9 @@ namespace BBank.Model
         public string numero { get; set; }
         public decimal saldo { get; set; }
 
-        public virtual void saque(decimal valor)
+        public virtual decimal saque(decimal valor)
         {
-            saldo -= valor;
+            return saldo - valor;
 
         }
 

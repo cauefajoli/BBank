@@ -33,8 +33,8 @@
             this.cbOrigem = new System.Windows.Forms.ComboBox();
             this.cbDestino = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.btnTransferir = new System.Windows.Forms.Button();
+            this.txtbValor = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
@@ -84,21 +84,22 @@
             this.label3.TabIndex = 5;
             this.label3.Text = "DESTINO";
             // 
-            // button1
+            // btnTransferir
             // 
-            this.button1.Location = new System.Drawing.Point(386, 78);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(151, 23);
-            this.button1.TabIndex = 7;
-            this.button1.Text = "TRANSFERIR";
-            this.button1.UseVisualStyleBackColor = true;
+            this.btnTransferir.Location = new System.Drawing.Point(386, 78);
+            this.btnTransferir.Name = "btnTransferir";
+            this.btnTransferir.Size = new System.Drawing.Size(151, 23);
+            this.btnTransferir.TabIndex = 7;
+            this.btnTransferir.Text = "TRANSFERIR";
+            this.btnTransferir.UseVisualStyleBackColor = true;
+            this.btnTransferir.Click += new System.EventHandler(this.btnTransferir_Click);
             // 
-            // textBox1
+            // txtbValor
             // 
-            this.textBox1.Location = new System.Drawing.Point(280, 78);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(100, 20);
-            this.textBox1.TabIndex = 8;
+            this.txtbValor.Location = new System.Drawing.Point(280, 78);
+            this.txtbValor.Name = "txtbValor";
+            this.txtbValor.Size = new System.Drawing.Size(100, 20);
+            this.txtbValor.TabIndex = 8;
             // 
             // label4
             // 
@@ -116,8 +117,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(550, 116);
             this.Controls.Add(this.label4);
-            this.Controls.Add(this.textBox1);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.txtbValor);
+            this.Controls.Add(this.btnTransferir);
             this.Controls.Add(this.cbDestino);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.cbOrigem);
@@ -139,8 +140,8 @@
         private System.Windows.Forms.ComboBox cbOrigem;
         private System.Windows.Forms.ComboBox cbDestino;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Button btnTransferir;
+        private System.Windows.Forms.TextBox txtbValor;
         private System.Windows.Forms.Label label4;
     }
 }
