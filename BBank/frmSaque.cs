@@ -59,16 +59,24 @@ namespace BBank
             {
                 DAO obj = new DAO();
                 var conta = obj.RetornaConta(cbContas.SelectedItem.ToString());
-                conta.saque(Convert.ToDecimal(txtbValor.Text));
-                if (obj.atualizarSaldo(conta))
+                if(conta.saldo >= Convert.ToDecimal(txtbValor.Text))
                 {
-                    MessageBox.Show("Saque realizado");
-                    base.Close();
+                    conta.saque(Convert.ToDecimal(txtbValor.Text));
+                    if (obj.atualizarSaldo(conta))
+                    {
+                        MessageBox.Show("Saque realizado");
+                        base.Close();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Falha no saque");
+                    }
                 }
                 else
                 {
-                    MessageBox.Show("Falha no saque");
+                    MessageBox.Show("Saldo insuficiente");
                 }
+                
             }
         }
 

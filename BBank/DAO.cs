@@ -20,7 +20,7 @@ namespace BBank
             try
             {
                 cmd.Connection.Open();
-                cmd.CommandText = "INSERT INTO CONTA VALUES (@NUMERO,@AGENCIA,@TIPO,@SALDO);";
+                cmd.CommandText = "INSERT INTO CONTA VALUES (@NUMERO,@AGENCIA,@TIPO,@SALDO,1);";
                 cmd.Parameters.Add("@NUMERO", MySqlDbType.VarChar).Value = conta.numero;
                 cmd.Parameters.Add("@AGENCIA", MySqlDbType.VarChar).Value = conta.agencia;
                 cmd.Parameters.Add("@TIPO", MySqlDbType.VarChar).Value = conta.tipo;
