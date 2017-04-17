@@ -40,5 +40,17 @@ namespace BBank
             frmTransferencia transferir = new frmTransferencia();
             transferir.ShowDialog();
         }
+
+        private void btnDeposito_Click(object sender, EventArgs e)
+        {
+            frmDeposito depositar = new frmDeposito();
+            depositar.ShowDialog();
+        }
+
+        private void btnSaque_Click(object sender, EventArgs e)
+        {
+            frmSaque sacar = new frmSaque();
+            sacar.ShowDialog();
+        }
     }
 }

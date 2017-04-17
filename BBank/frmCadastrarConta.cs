@@ -32,7 +32,7 @@ namespace BBank
                 else
                     conta.tipo = 'P';
 
-                DAL op = new DAL();
+                DAO op = new DAO();
                 if (op.cadastrarConta(conta))
                     MessageBox.Show("Conta Cadastrada");
                 else
@@ -62,6 +62,15 @@ namespace BBank
                 return false;
             }
             return true;
+        }
+
+        private void txtbSaldo_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != ','))
+                e.Handled = true;
+
+            if ((e.KeyChar == ',') && ((sender as MaskedTextBox).Text.IndexOf('.') > -1))
+                e.Handled = true;
         }
     }
 }

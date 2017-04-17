@@ -135,6 +135,7 @@
             this.txtbSaldo.Name = "txtbSaldo";
             this.txtbSaldo.Size = new System.Drawing.Size(138, 20);
             this.txtbSaldo.TabIndex = 2;
+            this.txtbSaldo.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtbSaldo_KeyPress);
             // 
             // btnCadastrar
             // 

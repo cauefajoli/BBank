@@ -19,7 +19,7 @@ namespace BBank
 
         private void frmListaContas_Load(object sender, EventArgs e)
         {
-            DAL contas = new DAL();
+            DAO contas = new DAO();
             dtgContas.DataSource = contas.listarConta();
         }
     }

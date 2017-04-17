@@ -81,6 +81,7 @@
             this.btnDeposito.TabIndex = 3;
             this.btnDeposito.Text = "DEPÓSITO";
             this.btnDeposito.UseVisualStyleBackColor = true;
+            this.btnDeposito.Click += new System.EventHandler(this.btnDeposito_Click);
             // 
             // btnSaque
             // 
@@ -91,6 +92,7 @@
             this.btnSaque.TabIndex = 4;
             this.btnSaque.Text = "SAQUE";
             this.btnSaque.UseVisualStyleBackColor = true;
+            this.btnSaque.Click += new System.EventHandler(this.btnSaque_Click);
             // 
             // btnTransferencia
             // 

@@ -49,12 +49,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DAL.cs" />
+    <Compile Include="DAO.cs" />
     <Compile Include="frmCadastrarConta.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="frmCadastrarConta.Designer.cs">
       <DependentUpon>frmCadastrarConta.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmDeposito.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmDeposito.Designer.cs">
+      <DependentUpon>frmDeposito.cs</DependentUpon>
     </Compile>
     <Compile Include="frmEncerrarConta.cs">
       <SubType>Form</SubType>
@@ -74,6 +80,12 @@
     <Compile Include="frmPrincipal.Designer.cs">
       <DependentUpon>frmPrincipal.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmSaque.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmSaque.Designer.cs">
+      <DependentUpon>frmSaque.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmTransferencia.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -88,6 +100,9 @@
     <EmbeddedResource Include="frmCadastrarConta.resx">
       <DependentUpon>frmCadastrarConta.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmDeposito.resx">
+      <DependentUpon>frmDeposito.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmEncerrarConta.resx">
       <DependentUpon>frmEncerrarConta.cs</DependentUpon>
     </EmbeddedResource>
@@ -96,6 +111,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmPrincipal.resx">
       <DependentUpon>frmPrincipal.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmSaque.resx">
+      <DependentUpon>frmSaque.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmTransferencia.resx">
       <DependentUpon>frmTransferencia.cs</DependentUpon>
@@ -111,6 +129,7 @@
     </Compile>
     <None Include="packages.config" />
     <None Include="Properties\DataSources\BBank.Model.ContaCorrente.datasource" />
+    <None Include="Properties\DataSources\BBank.Model.ContaModelo.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

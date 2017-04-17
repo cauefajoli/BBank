@@ -11,14 +11,14 @@ using System.Windows.Forms;
 
 namespace BBank
 {
-    public partial class frmEncerrarConta : Form
+    public partial class frmDeposito : Form
     {
-        public frmEncerrarConta()
+        public frmDeposito()
         {
             InitializeComponent();
         }
 
-        private void frmEncerrarConta_Load(object sender, EventArgs e)
+        private void frmDeposito_Load(object sender, EventArgs e)
         {
             List<ContaModelo> contas = new List<ContaModelo>();
             DAO obj = new DAO();
@@ -29,24 +29,24 @@ namespace BBank
             }
         }
 
-        private void btnEncerrarConta_Click(object sender, EventArgs e)
+        private void btnDepositar_Click(object sender, EventArgs e)
         {
             if (validaForm())
             {
-                String conta = cbContas.SelectedItem.ToString();
                 DAO obj = new DAO();
-                if (obj.encerrarConta(conta))
+                var conta = obj.RetornaConta(cbContas.SelectedItem.ToString());
+                conta.deposito(Convert.ToDecimal(txtbValor.Text));
+                if (obj.atualizarSaldo(conta))
                 {
-                    MessageBox.Show("Conta Encerrada");
+                    MessageBox.Show("Depósito realizado");
                     base.Close();
                 }
                 else
                 {
-                    MessageBox.Show("Operação não realizada, conta com saldo");
-                    base.Close();
+                    MessageBox.Show("Falha no depósito");
                 }
             }
-           
+            
         }
 
         public bool validaForm()
@@ -57,13 +57,28 @@ namespace BBank
                 return false;
             }
 
-            if (cbContas.SelectedItem.ToString() == "")
+            if(cbContas.SelectedItem.ToString() == "")
             {
                 MessageBox.Show("Selecione a conta");
                 return false;
             }
 
+            if(txtbValor.Text == "")
+            {
+                MessageBox.Show("Informe o valor");
+                return false;
+            }
+
             return true;
+        }
+
+        private void txtbValor_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != ','))
+                e.Handled = true;
+
+            if ((e.KeyChar == ',') && ((sender as TextBox).Text.IndexOf('.') > -1))
+                e.Handled = true;
         }
     }
 }

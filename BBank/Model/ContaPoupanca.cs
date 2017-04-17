@@ -8,9 +8,9 @@ namespace BBank.Model
 {
     class ContaPoupanca : ContaModelo
     {
-        public override decimal saque(decimal valor)
+        public override void saque(decimal valor)
         {
-            return base.saque((saldo - valor) - 0,1);
+            saldo = valor - saldo;
         }
     }
 }

@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace BBank
 {
-    class DAL
+    class DAO
     {
         String conMySQL = "server=localhost; user id=BBANK; password=FAJOLI; database=BBANKSYSTEM";
 
@@ -53,7 +53,7 @@ namespace BBank
             try
             {
                 cmd.Connection.Open();
-                cmd.CommandText = "SELECT * FROM CONTA;";
+                cmd.CommandText = "SELECT * FROM CONTA WHERE ATIVA = 1;";
 
                 MySqlDataReader dr = cmd.ExecuteReader();
                 if (dr.HasRows)
@@ -65,6 +65,7 @@ namespace BBank
                         conta.agencia = dr["AGENCIA"].ToString();
                         conta.saldo = Convert.ToDecimal(dr["SALDO"]);
                         conta.tipo = Convert.ToChar(dr["TIPO"]);
+                        conta.ativa = Convert.ToInt32(dr["ATIVA"]);
 
                         contas.Add(conta);
                     }
@@ -183,6 +184,52 @@ namespace BBank
             {
                 cmd.Transaction.Rollback();
                 throw new Exception(ex.Message);
+            }
+        }
+        public bool depositar(ContaModelo conta)
+        {
+            MySqlCommand cmd = new MySqlCommand();
+            cmd.Connection = new MySqlConnection(conMySQL);
+
+            try
+            {
+                cmd.Connection.Open();
+                cmd.CommandText = "UPDATE CONTA SET SALDO = @SALDO WHERE NUMERO = @NUMERO";
+                cmd.Parameters.Add("@SALDO", MySqlDbType.Decimal).Value = conta.numero;
+                cmd.Parameters.Add("@NUMERO", MySqlDbType.String).Value = conta.saldo;
+                cmd.ExecuteNonQuery();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+            finally
+            {
+                cmd.Connection.Close();
+            }
+        }
+        public bool atualizarSaldo(ContaModelo conta)
+        {
+            MySqlCommand cmd = new MySqlCommand();
+            cmd.Connection = new MySqlConnection(conMySQL);
+
+            try
+            {
+                cmd.Connection.Open();
+                cmd.CommandText = "UPDATE CONTA SET SALDO = @SALDO WHERE NUMERO = @NUMERO";
+                cmd.Parameters.Add("@SALDO", MySqlDbType.Decimal).Value = conta.saldo;
+                cmd.Parameters.Add("@NUMERO", MySqlDbType.String).Value = conta.numero;
+                cmd.ExecuteNonQuery();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+            finally
+            {
+                cmd.Connection.Close();
             }
         }
     }

@@ -12,21 +12,18 @@ namespace BBank.Model
         public string agencia { get; set; }
         public string numero { get; set; }
         public decimal saldo { get; set; }
+        public int ativa { get; set; }
 
-        public virtual decimal saque(decimal valor)
+        public virtual void saque(decimal valor)
         {
-            return saldo - valor;
+            saldo = saldo - valor;
 
         }
 
-        public void deposito()
+        public virtual void deposito(decimal valor)
         {
-
+            saldo = saldo + valor;
         }
 
-        public void transferencia()
-        {
-
-        }
     }
 }

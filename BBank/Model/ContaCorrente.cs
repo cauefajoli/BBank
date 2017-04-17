@@ -8,6 +8,10 @@ namespace BBank.Model
 {
     class ContaCorrente : ContaModelo
     {
+        public override void saque(decimal valor)
+        {
+            saldo = valor - saldo;
+        }
 
     }
 }

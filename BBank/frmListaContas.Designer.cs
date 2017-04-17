@@ -29,16 +29,17 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dtgContas = new System.Windows.Forms.DataGridView();
-            this.agenciaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.contaCorrenteBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.contaModeloBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.numeroDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.agenciaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tipoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.saldoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.contaCorrenteBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.ativaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dtgContas)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.contaCorrenteBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.contaModeloBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // dtgContas
@@ -48,11 +49,12 @@
             this.dtgContas.AutoGenerateColumns = false;
             this.dtgContas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dtgContas.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.agenciaDataGridViewTextBoxColumn,
             this.numeroDataGridViewTextBoxColumn,
+            this.agenciaDataGridViewTextBoxColumn,
             this.tipoDataGridViewTextBoxColumn,
-            this.saldoDataGridViewTextBoxColumn});
-            this.dtgContas.DataSource = this.contaCorrenteBindingSource;
+            this.saldoDataGridViewTextBoxColumn,
+            this.ativaDataGridViewTextBoxColumn});
+            this.dtgContas.DataSource = this.contaModeloBindingSource;
             this.dtgContas.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dtgContas.Location = new System.Drawing.Point(0, 0);
             this.dtgContas.Name = "dtgContas";
@@ -60,45 +62,51 @@
             this.dtgContas.Size = new System.Drawing.Size(644, 306);
             this.dtgContas.TabIndex = 0;
             // 
-            // agenciaDataGridViewTextBoxColumn
+            // contaCorrenteBindingSource
             // 
-            this.agenciaDataGridViewTextBoxColumn.DataPropertyName = "agencia";
-            this.agenciaDataGridViewTextBoxColumn.HeaderText = "agencia";
-            this.agenciaDataGridViewTextBoxColumn.Name = "agenciaDataGridViewTextBoxColumn";
-            this.agenciaDataGridViewTextBoxColumn.ReadOnly = true;
-            this.agenciaDataGridViewTextBoxColumn.Width = 150;
+            this.contaCorrenteBindingSource.DataSource = typeof(BBank.Model.ContaCorrente);
+            // 
+            // contaModeloBindingSource
+            // 
+            this.contaModeloBindingSource.DataSource = typeof(BBank.Model.ContaModelo);
             // 
             // numeroDataGridViewTextBoxColumn
             // 
             this.numeroDataGridViewTextBoxColumn.DataPropertyName = "numero";
+            this.numeroDataGridViewTextBoxColumn.FillWeight = 150F;
             this.numeroDataGridViewTextBoxColumn.HeaderText = "numero";
             this.numeroDataGridViewTextBoxColumn.Name = "numeroDataGridViewTextBoxColumn";
             this.numeroDataGridViewTextBoxColumn.ReadOnly = true;
-            this.numeroDataGridViewTextBoxColumn.Width = 150;
+            // 
+            // agenciaDataGridViewTextBoxColumn
+            // 
+            this.agenciaDataGridViewTextBoxColumn.DataPropertyName = "agencia";
+            this.agenciaDataGridViewTextBoxColumn.FillWeight = 150F;
+            this.agenciaDataGridViewTextBoxColumn.HeaderText = "agencia";
+            this.agenciaDataGridViewTextBoxColumn.Name = "agenciaDataGridViewTextBoxColumn";
+            this.agenciaDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // tipoDataGridViewTextBoxColumn
             // 
             this.tipoDataGridViewTextBoxColumn.DataPropertyName = "tipo";
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.tipoDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle1;
             this.tipoDataGridViewTextBoxColumn.HeaderText = "tipo";
             this.tipoDataGridViewTextBoxColumn.Name = "tipoDataGridViewTextBoxColumn";
             this.tipoDataGridViewTextBoxColumn.ReadOnly = true;
-            this.tipoDataGridViewTextBoxColumn.Width = 150;
             // 
             // saldoDataGridViewTextBoxColumn
             // 
             this.saldoDataGridViewTextBoxColumn.DataPropertyName = "saldo";
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.saldoDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle2;
-            this.saldoDataGridViewTextBoxColumn.HeaderText = "Saldo";
+            this.saldoDataGridViewTextBoxColumn.FillWeight = 150F;
+            this.saldoDataGridViewTextBoxColumn.HeaderText = "saldo";
             this.saldoDataGridViewTextBoxColumn.Name = "saldoDataGridViewTextBoxColumn";
             this.saldoDataGridViewTextBoxColumn.ReadOnly = true;
-            this.saldoDataGridViewTextBoxColumn.Width = 150;
             // 
-            // contaCorrenteBindingSource
+            // ativaDataGridViewTextBoxColumn
             // 
-            this.contaCorrenteBindingSource.DataSource = typeof(BBank.Model.ContaCorrente);
+            this.ativaDataGridViewTextBoxColumn.DataPropertyName = "ativa";
+            this.ativaDataGridViewTextBoxColumn.HeaderText = "ativa";
+            this.ativaDataGridViewTextBoxColumn.Name = "ativaDataGridViewTextBoxColumn";
+            this.ativaDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // frmListaContas
             // 
@@ -114,6 +122,7 @@
             this.Load += new System.EventHandler(this.frmListaContas_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dtgContas)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.contaCorrenteBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.contaModeloBindingSource)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -122,9 +131,11 @@
 
         private System.Windows.Forms.DataGridView dtgContas;
         private System.Windows.Forms.BindingSource contaCorrenteBindingSource;
-        private System.Windows.Forms.DataGridViewTextBoxColumn agenciaDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn numeroDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn agenciaDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn tipoDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn saldoDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ativaDataGridViewTextBoxColumn;
+        private System.Windows.Forms.BindingSource contaModeloBindingSource;
     }
 }
