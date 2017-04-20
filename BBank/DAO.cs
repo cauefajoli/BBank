@@ -78,6 +78,10 @@ namespace BBank
 
                 throw new Exception(ex.Message);
             }
+            finally
+            {
+                cmd.Connection.Close();
+            }
         }
         public bool encerrarConta(String numero)
         {
@@ -109,6 +113,10 @@ namespace BBank
             catch (Exception ex)
             {
                 throw new Exception(ex.Message);
+            }
+            finally
+            {
+                cmd.Connection.Close();
             }
         }
         public ContaModelo RetornaConta(String numero)
@@ -154,7 +162,7 @@ namespace BBank
             }
             finally
             {
-                cmd.Connection.Clone();
+                cmd.Connection.Close();
             }
         }
         public bool transferir(ContaModelo contaOrigem,ContaModelo contaDestino)
