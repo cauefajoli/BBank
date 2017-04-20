@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BBank.Model;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -19,6 +20,14 @@ namespace BBank
 
         private void frmListaContas_Load(object sender, EventArgs e)
         {
+            DAO contas = new DAO();
+            dtgContas.DataSource = contas.listarConta();
+        }
+
+        private void dtgContas_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            frmEditarConta editar = new frmEditarConta(dtgContas.CurrentRow.Cells[0].Value.ToString());
+            editar.ShowDialog();
             DAO contas = new DAO();
             dtgContas.DataSource = contas.listarConta();
         }

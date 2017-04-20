@@ -232,5 +232,36 @@ namespace BBank
                 cmd.Connection.Close();
             }
         }
+        public bool atualizarConta(ContaModelo conta, String contaAtual)
+        {
+            MySqlCommand cmd = new MySqlCommand();
+            cmd.Connection = new MySqlConnection(conMySQL);
+            try
+            {
+                cmd.Connection.Open();
+                cmd.CommandText = "UPDATE CONTA SET NUMERO = @NUMERO, AGENCIA = @AGENCIA, TIPO = @TIPO WHERE NUMERO = @NUMEROATUAL";
+                cmd.Parameters.Add("@NUMERO", MySqlDbType.VarChar).Value = conta.numero;
+                cmd.Parameters.Add("@AGENCIA", MySqlDbType.VarChar).Value = conta.agencia;
+                cmd.Parameters.Add("@TIPO", MySqlDbType.VarChar).Value = conta.tipo;
+                cmd.Parameters.Add("@NUMEROATUAL", MySqlDbType.VarChar).Value = contaAtual;
+
+                if (cmd.ExecuteNonQuery() > 0)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+            finally
+            {
+                cmd.Connection.Close();
+            }
+        }
     }
 }

@@ -62,6 +62,12 @@
     <Compile Include="frmDeposito.Designer.cs">
       <DependentUpon>frmDeposito.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmEditarConta.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmEditarConta.Designer.cs">
+      <DependentUpon>frmEditarConta.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmEncerrarConta.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -102,6 +108,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmDeposito.resx">
       <DependentUpon>frmDeposito.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmEditarConta.resx">
+      <DependentUpon>frmEditarConta.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmEncerrarConta.resx">
       <DependentUpon>frmEncerrarConta.cs</DependentUpon>

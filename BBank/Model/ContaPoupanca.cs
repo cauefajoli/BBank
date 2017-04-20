@@ -10,7 +10,7 @@ namespace BBank.Model
     {
         public override void saque(decimal valor)
         {
-            saldo = saldo - valor;
+            saldo = (saldo - valor) - 0.20m;
         }
     }
 }
